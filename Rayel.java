@@ -34,7 +34,9 @@ public class Rayel
 	{
 		if (n = 0)
 			return "";
-		return freq + getChoralProbability(freq.charAt(freq.length()-1)+"", n-1);
+		if (freq.length() > 1)
+			return freq + getChoralProbability(freq.charAt(freq.length()-1)+"", n-1);
+		return freq + getChoralProbability(freq, n-1);
 	}
 	
 	public Static void main(String[] args)
