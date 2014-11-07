@@ -1,62 +1,76 @@
+import java.util.*;
+import java.io.*;
+
 public class Rayel
 {
-	public Rayel(long l)
-	{ 
+	public class Rayel(long frequency)
+	{
 		/**
-		**Specifies the p(love) as 1 = / (love)
+		** Creates a new Rayel object with probability derived from frequency of love
 		**/
-		love = nearestSigFigToString(l);
-		
-        }
-        private static String nearestSigFigToString(long n)
-	{
-		int i;
-		for(i = 10; i > 0 && n>= 1; i--)
+		probability = Long.toString(frequency);
+		switch(probability.length())
 		{
-			n /= Math.pow(10,Math.abs(10 - i));
-			
+			case 1: probability = "ones"; break; 
+			case 2: probability = "ten"; break;
+			case 3: probability = "hundred" break;
+			case 4: probability = "thousand"; break;
+			case 5: probability = "ten thousand"; break;
+			case 6: probability = "hundred thousand"; break;
+			case 7: probability = "million"; break;
+			case 8: probability = "ten million"; break;
+			case 9: probability = "hundred million"; break;
+			case 10: probability = "billion"; break;
+			case 11: probability = "ten billion"; break;
+			case 12: probability = "hundred billion"; break;
 		}
-		switch(i){
-			case 10: return "Ten";
-			case 9: return "Hundred";
-			case 8: return "Thousand";
-			case 7: return "Ten Thousand";
-			case 6: return "Hundred Thousand";
-			case 5: return "Million";
-			case 4: return "Ten Million";
-			case 3: return "Hundred Million";
-			case 2: return "Billion";
-			case 1: return "Ten Billion";
-			case 0: return "Hundred Billion";
-		}
-		return "Out of Bounds";
+		if (Character.isDigit(probability.charAt(0)))
+			probability = "Forever Alone.";
+		else
+			probability = "One in a "+probability; 
 	}
-	public String getProbabilityOfLove(int n, char c)
+	
+	public String getChoralProbability(int n)
 	{
-		if ( n <= 0) return c;
-		return "One in a "+ love.substring(0,love.length()-1) + love+getProbability(n-1, love.charAt(love.length()-1));
-
+		if (n = 0)
+			return "";
+		return probability + probability.charAt(probability.length() - 1) + getChoralProbability(n-1);
 	}
-
-	public static void main(String[])
+	
+	public Static void main(String[] args)
 	{
 		Rayel AndrewRayel = new Rayel(1000000);
-		String[] 1stVerses = "This world can be," "such a lonely place to hide in", "that's all I see", "till you open my eyes for me","and now I see the light",
-                "and now the future is so bright";
-		for(s : 1stVerses)
-			System.out.println(s);
-		System.out.println("I hold on tight to you, never letting go");
-		System.out.println("Your love's "+AndrewRayel.getProbabilityOfLove(1,'');
-		System.out.println("I'd put on a fight for you, can't make it on my own");
-		System.out.println("Your love's "+AndrewRayel.getProbabilityOfLove(1,'');
-		System.out.println("If I looooosseee your hearttttt");
-		System.out.println("I'm sure I'd fall apartttttt");
-		System.out.println("Your love's "+AndrewRayel.getProbabilityOfLove(1,''));
-		for(int i = 0; i < 5; i++)
-			System.out.println(AndrewRayel.getProbabiltyOfLove(i, ''));
-		System.out.println("INSERT FILTHY BEAT DROP");
+		String lead_in = "";
+		try
+		{
+			Scanner s = new Scanner(new File("Rayel_LeadIn.txt"));
+			while(s.hasNext)
+				lead_in = lead_in + s.nextLine() + "\n";
+		
+		}
+		catch (Exception e)
+		{
+			System.out.println("Turn down for "+e); 
+		}
+		if (lead_in.length() == 0)
+			return; //The music died. 
+		System.out.println(lead_in);
+		/** begin chorus
+		**/
+		System.out.println("\n");
+		System.out.println("I hold on tight, to you, never letting go...");
+		System.out.println("Your love's "+AndrewRayel.getChoralProbability(1));
+		System.out.println("I'd put up a fight for you, can't make it on my own.");
+		System.out.println("Your love's "+AndrewRayel.getChoralProbability(1));
+		System.out.println("\n If I lose your heart, I'm sure I'd fall apart" + "\n");
+		System.out.println("You are the sun to me, you're my everything.");
+		System.out.println("Your love's "+AndrewRayel.getChoralProbability(1));
+		for(int i = 3; i > 0; i--)
+			System.out.println(AndrewRayel.getChoralProbability(i));
+		System.out.println("O BLARGH BEAT FUCKING DROP!!!! ");
+		System.out.println(Thread.currentThread().getStackTrace());
 	}
-
-	String love;
-
+	
+	String probability;
+	
 }
