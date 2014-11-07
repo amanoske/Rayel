@@ -29,12 +29,12 @@ public class Rayel
 		else
 			probability = "One in a "+probability; 
 	}
-	
-	public String getChoralProbability(int n)
+
+	public String getChoralProbability(String freq, int n)
 	{
 		if (n = 0)
 			return "";
-		return probability + probability.charAt(probability.length() - 1) + getChoralProbability(n-1);
+		return freq + getChoralProbability(freq.charAt(freq.length()-1)+"", n-1);
 	}
 	
 	public Static void main(String[] args)
@@ -59,18 +59,18 @@ public class Rayel
 		**/
 		System.out.println("\n");
 		System.out.println("I hold on tight, to you, never letting go...");
-		System.out.println("Your love's "+AndrewRayel.getChoralProbability(1));
+		System.out.println("Your love's "+AndrewRayel.getChoralProbability(AndrewRayel.probability, 1));
 		System.out.println("I'd put up a fight for you, can't make it on my own.");
-		System.out.println("Your love's "+AndrewRayel.getChoralProbability(1));
+		System.out.println("Your love's "+AndrewRayel.getChoralProbability(AndrewRayel.probability, 1));
 		System.out.println("\n If I lose your heart, I'm sure I'd fall apart" + "\n");
 		System.out.println("You are the sun to me, you're my everything.");
-		System.out.println("Your love's "+AndrewRayel.getChoralProbability(1));
+		System.out.println("Your love's "+AndrewRayel.getChoralProbability(AndrewRayel.probability, 1));
 		for(int i = 3; i > 0; i--)
-			System.out.println(AndrewRayel.getChoralProbability(i));
+			System.out.println(AndrewRayel.getChoralProbability(AndrewRayel.probability, i));
 		System.out.println("O BLARGH BEAT FUCKING DROP!!!! ");
 		System.out.println(Thread.currentThread().getStackTrace());
 	}
 	
-	String probability;
+	public String probability;
 	
 }
