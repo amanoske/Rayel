@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Rayel
 {
-	public class Rayel(long frequency)
+	public Rayel(long frequency)
 	{
 		/**
 		** Creates a new Rayel object with probability derived from frequency of love
@@ -13,7 +13,7 @@ public class Rayel
 		{
 			case 1: probability = "ones"; break; 
 			case 2: probability = "ten"; break;
-			case 3: probability = "hundred" break;
+			case 3: probability = "hundred"; break;
 			case 4: probability = "thousand"; break;
 			case 5: probability = "ten thousand"; break;
 			case 6: probability = "hundred thousand"; break;
@@ -32,21 +32,21 @@ public class Rayel
 
 	public String getChoralProbability(String freq, int n)
 	{
-		if (n = 0)
+		if (n == 0)
 			return "";
 		if (freq.length() > 1)
 			return freq + getChoralProbability(freq.charAt(freq.length()-1)+"", n-1);
 		return freq + getChoralProbability(freq, n-1);
 	}
 	
-	public Static void main(String[] args)
+	public static void main(String[] args)
 	{
 		Rayel AndrewRayel = new Rayel(1000000);
 		String lead_in = "";
 		try
 		{
 			Scanner s = new Scanner(new File("Rayel_LeadIn.txt"));
-			while(s.hasNext)
+			while(s.hasNext())
 				lead_in = lead_in + s.nextLine() + "\n";
 		
 		}
@@ -70,7 +70,7 @@ public class Rayel
 		for(int i = 3; i > 0; i--)
 			System.out.println(AndrewRayel.getChoralProbability(AndrewRayel.probability, i));
 		System.out.println("O BLARGH BEAT FUCKING DROP!!!! ");
-		System.out.println(Thread.currentThread().getStackTrace());
+		//System.out.println(Arrays.toString(Thread.currentThread().getStackTrace()));
 	}
 	
 	public String probability;
